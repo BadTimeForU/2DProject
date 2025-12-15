@@ -1,14 +1,17 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    public int coins;
     public int health = 100;
     public float moveSpeed = 5f;
     public float jumpForce = 10f;
     public Transform groundCheck;
     public float groundCheckRadius = 0.2f;
     public LayerMask groundLayer;
+    public Image healthImage;
     
     private Rigidbody2D rb;
     private bool isGrounded;
@@ -52,6 +55,8 @@ public class Player : MonoBehaviour
         }
         
         SetAnimator(moveInput);
+        
+        healthImage.fillAmount = health / 100f;
     }
 
     private void FixedUpdate()
